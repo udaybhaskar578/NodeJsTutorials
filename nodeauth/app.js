@@ -8,6 +8,7 @@ var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var multer = require('multer');
+var bcryptjs = require('bcryptjs');
 
 var uploads = multer({dest:'./uploads'});
 var expressValidator = require('express-validator');
