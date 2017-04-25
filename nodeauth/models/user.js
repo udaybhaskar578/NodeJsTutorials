@@ -29,6 +29,21 @@ var UserSchema = mongoose.Schema({
 
 var User = module.exports = mongoose.model('User',UserSchema);
 
+//Because we are using these functions outside of the file we use modules.export
+module.exports.getUserById = function(id, callback){
+	User.findById(id, callback);
+}
+
+module.exports.getUserByUsername = function(username, callback){
+	var query = {username: username};
+	User.findOne(query, callback);
+}
+
+module.exports.comparePassword = function(candidatePassword, hash, callback){
+	bcryptjs.compare(candidatePassword, hash, function(err, isMatch) {
+    	callback(null, isMatch);
+	});
+}
 module.exports.createUser = function(newUser, callback){
 
     bcryptjs.genSalt(10, function(err,salt){
