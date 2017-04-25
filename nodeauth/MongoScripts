@@ -1,0 +1,29 @@
+//To Create collections
+db.createCollection('customers')
+
+//to display existing dbs
+show dbs
+
+//to display collections
+show collections
+
+//Create DB 
+use nodeauth
+db.createCollection('users')
+
+//Insert Data into users
+db.users.insert({name:'Uday',email:'udaybhaskar578@gmail.com',username:
+                'udaybhaskar578', password:'1234'});
+
+//display users in the table
+db.users.find()
+db.users.find().pretty()
+
+//Update a record
+db.users.update({username:'udaybhaskar578'},{$set:{email:
+                'udaybhaskar578@yahoo.com'}});
+//if you dont use $set it will get rid of everything and just 
+    sets email to the given value
+
+//Removea record
+db.users.remove({username:'udaybhaskar578'});
